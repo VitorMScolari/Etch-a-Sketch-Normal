@@ -1,0 +1,61 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    max-height: 960px;
+}
+
+.button-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, blue, red);
+    padding: 20px;
+    min-width: 100%;
+}
+
+button {
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    margin: 0px;
+    height: 70px;
+    width: 320px;
+    cursor: pointer;
+}
+
+
+#container {
+    display: grid;
+    position: relative;
+    top: 25%;
+    left:25%;
+    height: 50%;
+    width: 50%;
+    /* margin-left: 400px;
+    margin-right: 400px; */
+    justify-content: center;
+    border: lightslategrey;
+    box-shadow: lightslategrey;
+    box-sizing: border-box;
+}
+
+.main {
+    background-color: black;
+    border: 1px solid red;
+    /* height: 100px;
+    width: 100%; */
+}
+
+  canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}  
