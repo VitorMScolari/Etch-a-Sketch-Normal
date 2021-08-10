@@ -53,10 +53,3 @@ button {
     /* height: 100px;
     width: 100%; */
 }
-
-  canvas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}  
