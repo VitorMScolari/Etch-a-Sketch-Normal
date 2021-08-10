@@ -1,11 +1,14 @@
-const button = document.querySelector('.button');
 const container = document.querySelector('#container');
+const grid = document.querySelector('#grid-number');
+const clear = document.querySelector('#clear');
+const eraser = document.querySelector('#eraser');
+const RGB = document.querySelector('#RGB');
 
 let painting = false;
 
 let count = 0;
 
-for(let i=0; i < 10; i++) {
+for(let i=0; i < 20; i++) {
     container.style.gridTemplateColumns = `repeat(${i}, 1fr)`
     container.style.gridTemplateRows = `repeat(${i}, 1fr)`
     count++;
@@ -20,25 +23,6 @@ for(let i=0; i < countTotal; i++) {
     const divs = document.createElement('div');
     divs.classList.add('main');
     container.appendChild(divs);
-    
-    const canvas = document.createElement('canvas');
-    canvas.setAttribute('class', 'main' + [i]);
-    divs.appendChild(canvas)
-    
-}
-
-const containerHeight = container.getBoundingClientRect().height;
-const containerWidth = container.getBoundingClientRect().width;
-
-const canvasHeight = containerHeight / (count + 1);
-const canvasWidth = containerWidth / (count + 1);
-
-
-for(let i=0; i < countTotal; i++) {
-
-    let canvas = document.querySelector('.main' + [i]);
-    
-    canvas.setAttribute("style",`height: ${canvasHeight}px; width: ${canvasWidth}px;`)
 
 }
 
@@ -48,51 +32,33 @@ const main = Array.from(document.querySelectorAll('.main'));
 
 
 function mainDraw(e) {
-    
     if (!painting) return;
-
-    for(let i=0; i < countTotal; i++) {
-
-    let mainBoard = document.querySelector('.main' + [i]);
-
-    let ctx = mainBoard.getContext('2d');
-
     
-    ctx.lineWidth = 5;
-    ctx.lineCap = 'round'
-    ctx.strokeStyle = 'green';
-
-
-    ctx.beginPath();
-    ctx.moveTo(e.offsetX, e.offsetY)
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
-
-    }
-
+    this.style.backgroundColor = 'white';
 }
 
-function startDrawing() {
+function startDrawing(e) {
     painting = true;
+    this.style.backgroundColor = 'white';
+
 }
 
-function stopDrawing(e) {
+function stopDrawing() {
     painting = false;
     
-    for(let i=0; i <= 10; i++) {
+}
 
-    let mainBoard = document.querySelector('.main' + [i]);
-    let ctx = mainBoard.getContext('2d');
 
-     ctx.beginPath();
+function mouseOut() {
+        painting = false;
 
-    }
 }
 
 
 main.forEach(main => main.addEventListener('mousemove', mainDraw))
 main.forEach(main => main.addEventListener('mousedown', startDrawing))
 main.forEach(main => main.addEventListener('mouseup', stopDrawing))
+container.addEventListener('mouseleave', () => painting = false)
 
 
 
