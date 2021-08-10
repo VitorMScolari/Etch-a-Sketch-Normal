@@ -2,7 +2,30 @@ const container = document.querySelector('#container');
 const grid = document.querySelector('#grid-number');
 const clear = document.querySelector('#clear');
 const eraser = document.querySelector('#eraser');
-const RGB = document.querySelector('#RGB');
+const rgbColor = document.querySelector('#rgbColor');
+const sliderText = document.querySelector('.sliderText');
+
+
+function changeSliderText() {
+    sliderText.textContent = "Grid Size";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let painting = false;
 
