@@ -63,40 +63,39 @@ for(let i=0; i < (value * value); i++) {
 
 // const main = Array.from(document.querySelectorAll('.main'));
 
-
-function mainDraw() {
+function mainDraw(e) {
     if (!painting) return;
 
-    if (toggleEraser == false && toggleRGB == false) {
+    if (toggleRGB == false) {
         this.style.backgroundColor = 'white';
     } else if (toggleRGB == true) {
         this.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
         hue++;
         if(hue >= 360) {
             hue = 0;
-         } else if (toggleEraser == true) {
-            this.style.backgroundColor = 'black';
-        }
+         } else if (e.path[1].className == "active") {
+           this.style.backgroundColor = 'black';
+         }
     } 
     
-    
+
 
 }
 
-function startDrawing() {
+function startDrawing(e) {
     painting = true;
     
-    if (toggleEraser == false && toggleRGB == false) {
+    if (toggleRGB == false) {
         this.style.backgroundColor = 'white';
     } else if(toggleRGB == true) {
         this.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
         hue++;
         if(hue >= 360) {
             hue = 0;
-         } else if (toggleEraser == true) {
-            this.style.backgroundColor = 'black';
-         }
-    }
+          } else if (e.path[1].className == "active") {
+             this.style.backgroundColor = 'black';
+          }
+     }
 
 }
 
@@ -115,7 +114,7 @@ container.addEventListener('mouseleave', () => painting = false)
 let hue = Math.floor(Math.random() * 10) + 1;
 
 function toggleColor() {
-    toggleEraser = false;
+    container.classList.remove('active');
 
     if (toggleRGB == false) {
         toggleRGB = true;
@@ -124,6 +123,9 @@ function toggleColor() {
     }
 }
 
+function eraseGrid() {    
+    container.classList.add('active');
+}
 
 rgbColor.addEventListener('click', toggleColor);
 
@@ -131,13 +133,6 @@ rgbColor.addEventListener('click', toggleColor);
 clear.addEventListener('click', reloadGrid);
 
 
-function eraseGrid() {    
-    if (toggleEraser == false) {
-        toggleEraser = true;
-    } else if (toggleEraser == true) {
-        toggleEraser = false;
-    }
-}
 
 eraser.addEventListener('click', eraseGrid);
 
