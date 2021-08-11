@@ -35,20 +35,10 @@ function changeSliderText(value) {
     sliderText.innerHTML = `Grid size: ${value} x ${value}`;
 }
 
-
-// let count = 0;
-
 function gridSize(value) {
 
-// for(let i=0; i < value; i++) {
     container.style.gridTemplateColumns = `repeat(${value}, 1fr)`
     container.style.gridTemplateRows = `repeat(${value}, 1fr)`
-    // count++;
-// }
-
-// count--;
-
-// const countTotal = (count*count);
 
 for(let i=0; i < (value * value); i++) {
     const divs = document.createElement('div');
@@ -60,8 +50,6 @@ for(let i=0; i < (value * value); i++) {
 }
 
 }
-
-// const main = Array.from(document.querySelectorAll('.main'));
 
 function mainDraw(e) {
     if (!painting) return;
@@ -78,7 +66,6 @@ function mainDraw(e) {
          }
     } 
     
-
 
 }
 
@@ -104,10 +91,6 @@ function stopDrawing() {
     
 }
 
-
-// main.forEach(main => main.addEventListener('mousemove', mainDraw))
-// main.forEach(main => main.addEventListener('mousedown', startDrawing))
-// main.forEach(main => main.addEventListener('mouseup', stopDrawing))
 container.addEventListener('mouseleave', () => painting = false)
 
 
@@ -129,10 +112,7 @@ function eraseGrid() {
 
 rgbColor.addEventListener('click', toggleColor);
 
-
 clear.addEventListener('click', reloadGrid);
-
-
 
 eraser.addEventListener('click', eraseGrid);
 
