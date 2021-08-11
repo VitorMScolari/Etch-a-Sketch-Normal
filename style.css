@@ -93,7 +93,7 @@ body {
 #container {
     display: grid;
     position: relative;
-    top: 25%;
+    top: 15%;
     left:25%;
     height: 50%;
     width: 50%;
@@ -107,6 +107,7 @@ body {
     background-color: black;
     border: 1px solid red;
 }
+
 
 *, *::before, *after {
     box-sizing: border-box;
