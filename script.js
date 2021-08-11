@@ -54,16 +54,18 @@ for(let i=0; i < (value * value); i++) {
 function mainDraw(e) {
     if (!painting) return;
 
-    if (toggleRGB == false) {
+    this.style.backgroundColor = 'black';
+
+    if (toggleRGB == false && (e.path[1].className != "active" && e.path[1].className != "white active")) {
         this.style.backgroundColor = 'white';
-    } else if (toggleRGB == true) {
+    } else if (toggleRGB == true && e.path[1].className != "active") {
         this.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
         hue++;
         if(hue >= 360) {
             hue = 0;
-         } else if (e.path[1].className == "active") {
-           this.style.backgroundColor = 'black';
-         }
+         } //else if (e.path[1].className = "active" || e.path[1].classList.length == 2) {
+        //    this.style.backgroundColor = 'black';
+        //  }
     } 
     
 
@@ -72,16 +74,20 @@ function mainDraw(e) {
 function startDrawing(e) {
     painting = true;
     
-    if (toggleRGB == false) {
+    console.log(e)
+
+    this.style.backgroundColor = 'black';
+
+    if (toggleRGB == false && (e.path[1].className != "active" && e.path[1].className != "white active")) {
         this.style.backgroundColor = 'white';
-    } else if(toggleRGB == true) {
+    } else if(toggleRGB == true && e.path[1].className != "active") {
         this.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
         hue++;
         if(hue >= 360) {
             hue = 0;
-          } else if (e.path[1].className == "active") {
-             this.style.backgroundColor = 'black';
-          }
+          } //else if (e.path[1].className == "active" || e.path[1].classList.length == 2) {
+        //      this.style.backgroundColor = 'black';
+        //   }
      }
 
 }
@@ -101,8 +107,10 @@ function toggleColor() {
 
     if (toggleRGB == false) {
         toggleRGB = true;
+        container.classList.remove('white')
     } else {
         toggleRGB = false;
+        container.classList.add('white');
     }
 }
 
