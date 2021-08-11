@@ -105,17 +105,26 @@ let hue = Math.floor(Math.random() * 10) + 1;
 function toggleColor() {
     container.classList.remove('active');
 
+    eraser.classList.remove('yellow');
+
     if (toggleRGB == false) {
         toggleRGB = true;
         container.classList.remove('white')
+
+        rgbColor.classList.add('blue');
     } else {
         toggleRGB = false;
         container.classList.add('white');
+
+        rgbColor.classList.remove('blue');
     }
 }
 
 function eraseGrid() {    
     container.classList.add('active');
+
+    eraser.classList.add('yellow');
+    rgbColor.classList.remove('blue')
 }
 
 rgbColor.addEventListener('click', toggleColor);
